@@ -6,7 +6,7 @@ export default {
         // Text color
         WHITE_400: '#FFFFFF',
         WHITE_300: '#F4EDE8',
-        WHITE_200: 'C4C4CF',
+        WHITE_200: 'CAC4CF',
         WHITE_100: 'E5E5E5',
 
         // Placeholder color
@@ -14,6 +14,9 @@ export default {
         
         // Input color
         GRAY_200: '#262529',
+
+        // Input color
+        GRAY_300: '#948F99',
 
         // Main Background color
         BACKGROUND_100: '#1C1B1E',
