@@ -6,14 +6,14 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyles from './styles/global'
 import theme from './styles/theme'
 
-import { SignIn } from './pages/SignIn'
+import { Header } from './components/Header'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <SignIn />
+      <Header />
     </ThemeProvider>
   </React.StrictMode>,
 )
