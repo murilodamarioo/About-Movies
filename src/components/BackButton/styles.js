@@ -8,4 +8,8 @@ export const Container = styled.a`
     margin-top: 4.2rem;
 
     color: ${({ theme }) => theme.COLORS.PINK};
+
+    > svg {
+        color: ${({ theme }) => theme.COLORS.PINK};
+    }
 `
