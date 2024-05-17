@@ -18,6 +18,9 @@ export default {
         // Input color
         GRAY_300: '#948F99',
 
+        // Tag Background
+        GRAY_400: '#282124',
+
         // Main Background color
         BACKGROUND_100: '#1C1B1E',
         // Header Background color
