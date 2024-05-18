@@ -8,7 +8,11 @@ export const Container = styled.header`
     align-items: center;
     justify-content: space-around;
 
-    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_200};
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: ${({ theme }) => theme.COLORS.BACKGROUND_200};
+
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_100};
 
 
     > h2 {

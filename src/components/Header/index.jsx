@@ -2,8 +2,8 @@ import { Container, Profile, Search } from './style'
 
 import { FiSearch } from 'react-icons/fi'
 
-import { Tag } from '../Tag'
 import { Input } from '../Input'
+
 
 
 export function Header() {
