@@ -35,4 +35,24 @@ export default createGlobalStyle`
     button:hover, a:hover {
         filter: brightness(0.9);
     }
+
+    ::-webkit-scrollbar {
+        width: .8rem;
+        height: .9.6rem; 
+    }
+
+    ::-webkit-scrollbar-track {
+        background: ${({ theme }) => theme.COLORS.BACKGROUND_100};
+        border-radius: 10px; 
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: ${({ theme }) => theme.COLORS.PINK};
+        border-radius: .8rem; /* Bordas arredondadas */
+    }
+
+    ::-webkit-scrollbar-button {
+        display: none;
+    }
+
 `
