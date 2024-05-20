@@ -6,8 +6,9 @@ export default {
         // Text color
         WHITE_400: '#FFFFFF',
         WHITE_300: '#F4EDE8',
-        WHITE_200: 'CAC4CF',
-        WHITE_100: 'E5E5E5',
+        WHITE_200: '#CAC4CF',
+        WHITE_100: '#E5E5E5',
+        GRAY_500: '#999591',
 
         // Placeholder color
         GRAY_100: '#048F99',
@@ -20,6 +21,7 @@ export default {
 
         // Tag Background
         GRAY_400: '#282124',
+        GRAY_600: '#312E38',
 
         // Main Background color
         BACKGROUND_100: '#1C1B1E',
