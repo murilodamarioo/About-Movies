@@ -11,7 +11,7 @@ export function Profile() {
     return (
         <Container>
             <header>
-                <BackButton icon={FiArrowLeft} title="Voltar"/>
+                <BackButton to="/" icon={FiArrowLeft} title="Voltar" />
             </header>
 
             <Form>

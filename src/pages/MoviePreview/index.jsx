@@ -20,7 +20,7 @@ export function MoviePreview() {
 
             <main>
                 <Content>
-                    <BackButton icon={FiArrowLeft} title="Voltar"/>
+                    <BackButton to="/" icon={FiArrowLeft} title="Voltar"/>
 
                     <RatingMovie>
                         <h1>Interestellar</h1>

@@ -1,5 +1,7 @@
 import { Container, Form, Textarea, BookMarks } from './styles'
 
+import { Link } from 'react-router-dom'
+
 import { Input } from '../../components/Input'
 import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
@@ -16,7 +18,7 @@ export function CreateMovie() {
             <main>
                 <Form>
                     <header>
-                        <BackButton icon={FiArrowLeft} title="Voltar"/>
+                        <BackButton to="/" icon={FiArrowLeft} title="Voltar"/>
                         <h1>Novo Filme</h1>
                     </header>
 

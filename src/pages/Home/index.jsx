@@ -19,10 +19,10 @@ export function Home() {
                     <header>
                         <h1>Meus filmes</h1>
 
-                        <Button icon={FiPlus} title="Adicionar filme"/>
+                        <Button icon={FiPlus} title="Adicionar filme" to="/create"/>
                     </header>
 
-                    <Note data={{
+                    <Note to="/movie/1" data={{
                         title: "Interestellar",
                         tags: [
                             { id: 1, name: "Drama" },
@@ -32,7 +32,7 @@ export function Home() {
                     }}
                     />
 
-                    <Note data={{
+                    <Note to="/movie/2" data={{
                         title: "Interestellar",
                         tags: [
                             { id: 1, name: "Drama" },
@@ -42,7 +42,7 @@ export function Home() {
                     }}
                     />
 
-                    <Note data={{
+                    <Note to="/movie/3" data={{
                         title: "Interestellar",
                         tags: [
                             { id: 1, name: "Drama" },

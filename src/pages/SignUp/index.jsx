@@ -36,7 +36,7 @@ export function SignUp() {
 
                 <Button title="Cadastrar"/>
 
-                <BackButton icon={FiArrowLeft} title="Voltar para o login"/>
+                <BackButton to="/" icon={FiArrowLeft} title="Voltar para o login"/>
             </Form>
 
             <Background />

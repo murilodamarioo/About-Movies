@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { Link } from 'react-router-dom'
+
 export const Container = styled.header`
     width: 100%;
     height: 11.6rem;
@@ -27,9 +29,10 @@ export const Search = styled.div`
     margin: 0 1rem;
 `
 
-export const Profile = styled.div`
+export const Profile = styled(Link)`
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     > div {
         display: flex;
@@ -52,5 +55,5 @@ export const Profile = styled.div`
             width: 6.4rem;
             height: 6.4rem;
             border-radius: 50%;
-        }
+    }
 `
