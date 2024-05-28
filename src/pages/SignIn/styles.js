@@ -35,7 +35,7 @@ export const Form = styled.form`
         color: ${({ theme }) => theme.COLORS.WHITE_300};
     }
 
-    > a {
+    :nth-child(7) {
         margin-top: 4.2rem;
         color: ${({ theme }) => theme.COLORS.PINK};
     }
