@@ -1,8 +1,49 @@
-# React + Vite
+# AboutMovies 🍿
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Front-End project with ReactJS to create a simple UI about movies that you like.
 
-Currently, two official plugins are available:
+## Libs
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [styled-components](https://styled-components.com/)
+  
+  ```bash
+  $ npm install --save styled-components
+  ```
+- [react-icons](https://react-icons.github.io/react-icons/)
+
+   ```bash
+   $ npm install react-icons --save
+   ```
+  
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+
+    ```bash
+    $ npm install react-router-dom
+    ```
+
+## Screens
+
+* Sign In
+  
+![SignIn](screenshots/signIn.png)
+
+* Sign Up
+
+![SignUp](screenshots/Signup.png)
+
+* Home
+
+![Home](screenshots/home.png)
+
+* New Movie
+
+![NewMovie](screenshots/newMovie.png)
+
+* Moview Preview
+
+![MoviePreview](screenshots/moviePreview.png)
+
+* Profile
+  
+![Profile](screenshots/profile.png)
+  
