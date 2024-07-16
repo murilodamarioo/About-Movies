@@ -1,4 +1,4 @@
-import { createContext, userContext, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { api } from '../services/api'
 
 export const AuthContext = createContext({})
@@ -8,7 +8,8 @@ function AuthProvider({ children }) {
 
   async function signIn({ email, password }) {
     try {
-      const response = await api.get('/sessions', { email, password })
+      const response = await api.post('/sessions', { email, password })
+      console.log(response)
       const { user, token } = response.data
 
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
@@ -31,7 +32,6 @@ function AuthProvider({ children }) {
 
 function useAuth() {
   const context = useContext(AuthContext)
-
   return context
 }
 

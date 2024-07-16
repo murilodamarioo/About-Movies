@@ -6,7 +6,18 @@ import { Link } from 'react-router-dom'
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 
+import { useState } from 'react'
+import { useAuth } from '../../hooks/auth'
+
 export function SignIn() {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const { signIn } = useAuth()
+
+    function handleSignIn() {
+        signIn({ email, password })
+    }
 
     return (
         <Container>
@@ -20,14 +31,16 @@ export function SignIn() {
                     icon={FiMail}
                     type="text"
                     placeholder="E-mail" 
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <Input 
                     icon={FiLock}
                     type="password"    
                     placeholder="Senha"
+                    onChange={(e) => setPassword(e.target.value)}
                 />
 
-                <Button title="Entrar"/>
+                <Button title="Entrar" onClick={handleSignIn}/>
 
                 <Link to="/register">Criar conta</Link>
             </Form>
