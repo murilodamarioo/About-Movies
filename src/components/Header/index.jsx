@@ -5,13 +5,16 @@ import { FiSearch } from 'react-icons/fi'
 import { Input } from '../Input'
 
 import { useAuth } from '../../hooks/auth'
-
 import { useNavigate } from 'react-router-dom'
+
+import { api } from '../../services/api'
 
 
 export function Header() {
     const navegate = useNavigate()
-    const { signOut } = useAuth()
+    const { user, signOut } = useAuth()
+
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
     function handleProfileNavigate() {
         navegate('/profile')
@@ -28,14 +31,14 @@ export function Header() {
             <Profile>
                 <div>
                     <strong>
-                        <p>Murilo Damario</p>
+                        <p>{user.name}</p>
                     </strong>
                     <a onClick={signOut}>Sair</a>
                 </div>
 
                 <a onClick={handleProfileNavigate}>
                     <img
-                        src="https://github.com/murilodamarioo.png" 
+                        src={avatarUrl}
                         alt="Foto de perfil" 
                     />
                 </a>
