@@ -29,10 +29,9 @@ export const Search = styled.div`
     margin: 0 1rem;
 `
 
-export const Profile = styled(Link)`
+export const Profile = styled.div`
     display: flex;
     align-items: center;
-    cursor: pointer;
 
     > div {
         display: flex;
@@ -48,12 +47,14 @@ export const Profile = styled(Link)`
             font-size: 1.4rem;
             color: ${({ theme }) => theme.COLORS.GRAY_300};
             align-self: flex-end;
+            cursor: pointer;
         }
     }
 
-    > img {
+    > a img {
             width: 6.4rem;
             height: 6.4rem;
             border-radius: 50%;
+            cursor: pointer;
     }
 `
