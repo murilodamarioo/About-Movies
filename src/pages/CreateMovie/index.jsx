@@ -20,6 +20,10 @@ export function CreateMovie() {
         setBookMarks(prevState => [...prevState, newBookMark])
         setNewBookMark('')
     }
+
+    function handleRemoveBookMark(deleted) {
+        setBookMarks(prevState => prevState.filter(bookMark => bookMark !== deleted))
+    }
     
     return(
         <Container>
@@ -48,7 +52,7 @@ export function CreateMovie() {
                                     <NoteItem 
                                         key={String(index)}
                                         value={bookMark}
-                                        onClick={() => {}}
+                                        onClick={() => handleRemoveBookMark(bookMark)}
                                     />
                                 ))
                             }
