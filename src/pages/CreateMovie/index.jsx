@@ -3,6 +3,9 @@ import { Container, Form, Textarea, BookMarks } from './styles'
 import { Link } from 'react-router-dom'
 
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+import { api } from '../../services/api'
 
 import { Input } from '../../components/Input'
 import { Header } from '../../components/Header'
@@ -13,8 +16,17 @@ import { BackButton } from '../../components/BackButton'
 import { FiArrowLeft } from 'react-icons/fi'
 
 export function CreateMovie() {
+    const navigate = useNavigate()
+    
+    const [title, setTile] = useState('')
+    const [rating, setRating] = useState('')
+    const [description, setDescription] = useState('')
     const [bookMarks, setBookMarks] = useState([])
     const [newBookMark, setNewBookMark] = useState('')
+
+    function handleBack() {
+        navigate(-1)
+    }
 
     function handleAddBookMark() {
         setBookMarks(prevState => [...prevState, newBookMark])
@@ -24,6 +36,32 @@ export function CreateMovie() {
     function handleRemoveBookMark(deleted) {
         setBookMarks(prevState => prevState.filter(bookMark => bookMark !== deleted))
     }
+
+    async function handleNewMovieNote() {
+        if (!title) {
+            return alert('Digite o título do filme!')
+        }
+
+        if (!rating) {
+            return alert('Faltar informar a avalição!')
+        }
+
+        if (!description) {
+            return alert('Faltou preencher as observações do filme!')
+        }
+        
+        if (newBookMark) {
+            return alert('A tag ainda não foi adicionada')
+        }
+        
+        await api.post('/movienotes', {
+            titile,
+            description,
+            rating,
+            tags: bookMarks
+        })
+        navigate(-1)
+    }
     
     return(
         <Container>
@@ -32,16 +70,28 @@ export function CreateMovie() {
             <main>
                 <Form>
                     <header>
-                        <BackButton to="/" icon={FiArrowLeft} title="Voltar"/>
+                        <BackButton onClick={handleBack} icon={FiArrowLeft} title="Voltar"/>
                         <h1>Novo Filme</h1>
                     </header>
 
                     <div className='input-group'>
-                        <Input placeholder="Título"/>
-                        <Input placeholder="Sua nota (de 0 a 5)"/>
+                        <Input 
+                            placeholder="Título"
+                            value={title}
+                            onChange={event => setTitle(event.target.value)}
+                        />
+                        <Input 
+                            placeholder="Sua nota (de 0 a 5)"
+                            value={rating}
+                            onChange={event => setRating(event.target.value)}
+                        />
                     </div>
 
-                    <Textarea placeholder="Observações" />
+                    <Textarea 
+                        placeholder="Observações" 
+                        value={description}
+                        onChange={event => setDescrition(event.target.value)}
+                    />
 
                     
                     <BookMarks>
@@ -67,8 +117,13 @@ export function CreateMovie() {
                     </BookMarks>
 
                     <div className="buttons-group">
-                        <Button title="Excluir filme"/>
-                        <Button title="Salvar alterações"/>
+                        <Button 
+                            title="Limpar"
+                        />
+                        <Button 
+                            title="Salvar alterações"
+                            onClick={handleNewMovieNote}
+                        />
                     </div>
                 </Form>
             </main>
