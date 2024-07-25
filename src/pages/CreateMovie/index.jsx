@@ -2,6 +2,8 @@ import { Container, Form, Textarea, BookMarks } from './styles'
 
 import { Link } from 'react-router-dom'
 
+import { useState } from 'react'
+
 import { Input } from '../../components/Input'
 import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
@@ -11,6 +13,14 @@ import { BackButton } from '../../components/BackButton'
 import { FiArrowLeft } from 'react-icons/fi'
 
 export function CreateMovie() {
+    const [bookMarks, setBookMarks] = useState([])
+    const [newBookMark, setNewBookMark] = useState('')
+
+    function handleAddBookMark() {
+        setBookMarks(prevState => [...prevState, newBookMark])
+        setNewBookMark('')
+    }
+    
     return(
         <Container>
             <Header />
@@ -33,8 +43,22 @@ export function CreateMovie() {
                     <BookMarks>
                         <h3>Marcadores</h3>
                         <div className="tags">
-                            <NoteItem value="Drama" />
-                            <NoteItem isNew placeholder="Novo marcador" />
+                            {
+                                bookMarks.map((bookMark, index) => (
+                                    <NoteItem 
+                                        key={String(index)}
+                                        value={bookMark}
+                                        onClick={() => {}}
+                                    />
+                                ))
+                            }
+                            <NoteItem 
+                                isNew 
+                                placeholder="Novo marcador" 
+                                value={newBookMark}
+                                onChange={event => setNewBookMark(event.target.value)}
+                                onClick={handleAddBookMark}
+                            />
                         </div>
                     </BookMarks>
 
