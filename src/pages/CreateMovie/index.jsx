@@ -1,7 +1,5 @@
 import { Container, Form, Textarea, BookMarks } from './styles'
 
-import { Link } from 'react-router-dom'
-
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -18,7 +16,7 @@ import { FiArrowLeft } from 'react-icons/fi'
 export function CreateMovie() {
     const navigate = useNavigate()
     
-    const [title, setTile] = useState('')
+    const [title, setTitle] = useState('')
     const [rating, setRating] = useState('')
     const [description, setDescription] = useState('')
     const [bookMarks, setBookMarks] = useState([])
@@ -55,7 +53,7 @@ export function CreateMovie() {
         }
         
         await api.post('/movienotes', {
-            titile,
+            title,
             description,
             rating,
             tags: bookMarks
@@ -90,7 +88,7 @@ export function CreateMovie() {
                     <Textarea 
                         placeholder="Observações" 
                         value={description}
-                        onChange={event => setDescrition(event.target.value)}
+                        onChange={event => setDescription(event.target.value)}
                     />
 
                     
@@ -107,7 +105,7 @@ export function CreateMovie() {
                                 ))
                             }
                             <NoteItem 
-                                isNew 
+                                isNew={true} 
                                 placeholder="Novo marcador" 
                                 value={newBookMark}
                                 onChange={event => setNewBookMark(event.target.value)}
