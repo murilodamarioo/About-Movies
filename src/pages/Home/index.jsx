@@ -6,13 +6,31 @@ import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
 import { Note } from '../../components/Note'
 
-
+import { api } from '../../services/api'
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 export function Home() {
+    const navigate = useNavigate()
+
+    const [search, setSearch] = useState('')
+    const [movieNotes, setMovieNotes] = useState([])
+
+    function handleNavigate(id) {
+        navigate(`/details/${id}`)
+    }
+
+    useEffect(() => {
+        async function fetchMovieNotes() {
+            const response = await api.get(`/movienotes?title=${search}`)
+            setMovieNotes(response.data)
+        }
+        fetchMovieNotes()
+    }, [search])
 
     return (
         <Container>
-            <Header />
+            <Header setSearch={setSearch} />
 
             <main>
                 <Content>
@@ -22,35 +40,15 @@ export function Home() {
                         <Button icon={FiPlus} title="Adicionar filme" to="/create"/>
                     </header>
 
-                    <Note to="/movie/1" data={{
-                        title: "Interestellar",
-                        tags: [
-                            { id: 1, name: "Drama" },
-                            { id: 2, name: "Ficção Científica" },
-                            { id: 3, name: "Família" }
-                        ]
-                    }}
-                    />
-
-                    <Note to="/movie/2" data={{
-                        title: "Interestellar",
-                        tags: [
-                            { id: 1, name: "Drama" },
-                            { id: 2, name: "Ficção Científica" },
-                            { id: 3, name: "Família" }
-                        ]
-                    }}
-                    />
-
-                    <Note to="/movie/3" data={{
-                        title: "Interestellar",
-                        tags: [
-                            { id: 1, name: "Drama" },
-                            { id: 2, name: "Ficção Científica" },
-                            { id: 3, name: "Família" }
-                        ]
-                    }}
-                    />
+                    {
+                        movieNotes.map(movieNote => (
+                            <Note 
+                                key={String(movieNote.id)}
+                                data={movieNote}
+                                onClick={() => handleNavigate(movieNote.id)}
+                            />
+                        ))
+                    }
                 </Content>
             </main>
         </Container>

@@ -6,15 +6,16 @@ import { Input } from '../Input'
 
 import { useAuth } from '../../hooks/auth'
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 import { api } from '../../services/api'
 
 
-export function Header() {
+export function Header({ setSearch }) {
     const navegate = useNavigate()
     const { user, signOut } = useAuth()
 
-    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
     function handleProfileNavigate() {
         navegate('/profile')
@@ -25,7 +26,11 @@ export function Header() {
             <h2>AboutMovies</h2>
 
             <Search>
-                <Input icon={FiSearch} placeholder="Pesquisar pelo título"/>
+                <Input 
+                    icon={FiSearch} 
+                    placeholder="Pesquisar pelo título"
+                    onChange={event => setSearch(event.target.value)}
+                />
             </Search>
 
             <Profile>
