@@ -1,8 +1,7 @@
 import styled  from 'styled-components'
 
-import { Link } from 'react-router-dom'
 
-export const Container = styled(Link)`
+export const Container = styled.div`
     margin-top: 2.4rem;
     background-color: ${({ theme }) => theme.COLORS.GRAY_400};
     padding: 3.2rem;

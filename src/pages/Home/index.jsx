@@ -16,7 +16,7 @@ export function Home() {
     const [search, setSearch] = useState('')
     const [movieNotes, setMovieNotes] = useState([])
 
-    function handleNavigate(id) {
+    function handleDetails(id) {
         navigate(`/details/${id}`)
     }
 
@@ -45,7 +45,7 @@ export function Home() {
                             <Note 
                                 key={String(movieNote.id)}
                                 data={movieNote}
-                                onClick={() => handleNavigate(movieNote.id)}
+                                onClick={() => handleDetails(movieNote.id)}
                             />
                         ))
                     }
