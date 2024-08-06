@@ -6,19 +6,25 @@ import { Input } from '../Input'
 
 import { useAuth } from '../../hooks/auth'
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 
 import { api } from '../../services/api'
 
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
+
 
 export function Header({ setSearch }) {
-    const navegate = useNavigate()
+    const navigate = useNavigate()
     const { user, signOut } = useAuth()
 
      const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
     function handleProfileNavigate() {
-        navegate('/profile')
+        navigate('/profile')
+    }
+
+    function handleSignOut() {
+        navigate('/')
+        signOut()
     }
 
     return (
@@ -38,7 +44,7 @@ export function Header({ setSearch }) {
                     <strong>
                         <p>{user.name}</p>
                     </strong>
-                    <a onClick={signOut}>Sair</a>
+                    <a onClick={handleSignOut}>Sair</a>
                 </div>
 
                 <a onClick={handleProfileNavigate}>
