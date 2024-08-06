@@ -16,6 +16,7 @@ import { useAuth } from '../../hooks/auth'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 
 
 export function MoviePreview() {
@@ -23,12 +24,27 @@ export function MoviePreview() {
 
     const { user } = useAuth()
 
+    const avatar = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+
     const params = useParams()
     const navigate = useNavigate()
 
     function handleBack() {
         navigate(-1)
     }
+
+    function renderStars(rating) {
+        const stars = [];
+        for (let i = 0; i < 5; i++) {
+            if (i < rating) {
+                stars.push(<IoStarSharp key={i} />);
+            } else {
+                stars.push(<TfiStar key={i} />);
+            }
+        }
+        return stars;
+    }
+    
 
     useEffect(() => {
         async function fetchMovie() {
@@ -52,16 +68,12 @@ export function MoviePreview() {
                     <RatingMovie>
                         <h1>{data.title}</h1>
 
-                        <IoStarSharp />
-                        <IoStarSharp />
-                        <IoStarSharp />
-                        <IoStarSharp />
-                        <TfiStar />
+                        {renderStars(data.rating)}
                     </RatingMovie>
 
                     <CreatedBy>
                         <img 
-                            src="https://github.com/murilodamarioo.png" 
+                            src={avatar} 
                             alt="Imagem do criador do post" 
                         />
                         <p>Por {user.name}</p>
@@ -71,9 +83,9 @@ export function MoviePreview() {
                     </CreatedBy>
 
                     <Genres>
-                        <Tag title="Ficção científica" />
-                        <Tag title="Drama" />
-                        <Tag title="Família" />
+                        {
+                            data.tags.map(tag => <Tag key={tag.id} title={tag.name}/>)
+                        }
                     </Genres>
 
                     <Description>
